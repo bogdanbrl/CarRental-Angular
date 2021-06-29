@@ -19,6 +19,10 @@ import { ShowCarComponent } from './components/show-car/show-car.component';
 import { ShowRentsComponent } from './components/show-rents/show-rents.component';
 import { ShowUserComponent } from './components/show-user/show-user.component';
 import { ShowUsersComponent } from './components/show-users/show-users.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { EditAddressComponent } from './components/edit-address/edit-address.component';
+import { AddAddressComponent } from './components/add-address/add-address.component';
+import { PrincipalHistoryComponent } from './components/principal-history/principal-history.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { ShowUsersComponent } from './components/show-users/show-users.component
     ShowCarComponent,
     ShowRentsComponent,
     ShowUserComponent,
-    ShowUsersComponent
+    ShowUsersComponent,
+    EditUserComponent,
+    EditAddressComponent,
+    AddAddressComponent,
+    PrincipalHistoryComponent
   ],
   imports: [
     BrowserModule,

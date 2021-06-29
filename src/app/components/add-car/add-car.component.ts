@@ -11,11 +11,6 @@ import {CarOptions} from '../../models/car-options';
 })
 export class AddCarComponent implements OnInit {
 
-  form: any = {};
-  isAddSuccessful = false;
-  isAddFailed = false;
-  errorMessage = '';
-
   car: Car = new Car();
   carOptions: CarOptions = new CarOptions();
 

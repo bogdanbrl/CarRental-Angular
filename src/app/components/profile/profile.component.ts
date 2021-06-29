@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TokenStorageService } from '../../auth/_services/token-storage.service';
 import {UserService} from '../../services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,8 @@ export class ProfileComponent implements OnInit {
   userDerails: any;
 
   constructor(private token: TokenStorageService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
@@ -33,6 +35,7 @@ export class ProfileComponent implements OnInit {
 
   deleteAddress(address) {
     this.userService.deleteAddress(address).subscribe(() => {});
+    window.location.reload();
   }
 
   editUser() {
@@ -40,6 +43,10 @@ export class ProfileComponent implements OnInit {
   }
 
   addAddress() {
+    this.router.navigateByUrl('address/add');
+  }
 
+  goToPrincipalHistoryPage() {
+    this.router.navigateByUrl('history/user');
   }
 }

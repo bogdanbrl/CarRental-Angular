@@ -38,7 +38,7 @@ export class UserService {
   }
 
   public deleteAddress(address): Observable<any> {
-    return this.http.delete<any>('http://localhost:8080/address', address);
+    return this.http.post<any>('http://localhost:8080/deleteAddress', address);
   }
 
   public addAddress(address): Observable<any> {
