@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { TokenStorageService } from '../../auth/_services/token-storage.service';
+import {TokenStorageService} from '../../auth/_services/token-storage.service';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 
@@ -15,7 +15,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private token: TokenStorageService,
               private userService: UserService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
@@ -25,24 +26,24 @@ export class ProfileComponent implements OnInit {
   getUserDetails() {
     this.userService.getUserDetails().subscribe(data => {
       this.userDerails = data;
-      console.log(data);
     });
   }
 
-  editAddressPage(id) {
-
+  goToEditAddressPage(id) {
+    this.router.navigateByUrl('address/edit/' + id);
   }
 
   deleteAddress(address) {
-    this.userService.deleteAddress(address).subscribe(() => {});
+    this.userService.deleteAddress(address).subscribe(() => {
+    });
     window.location.reload();
   }
 
-  editUser() {
-
+  goToEditUserPage() {
+    this.router.navigateByUrl('user/edit');
   }
 
-  addAddress() {
+  goToAddAddressPage() {
     this.router.navigateByUrl('address/add');
   }
 

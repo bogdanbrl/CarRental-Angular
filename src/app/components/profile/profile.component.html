@@ -24,8 +24,8 @@
         <div class="btn-group">
                 <span class="mr-2"><a (click)="goToPrincipalHistoryPage()"
                                       class="btn btn-light">See history</a></span>
-          <span class="mr-2"><a (click)="editUser()" class="btn btn-light">Edit user</a></span>
-          <span class="mr-2 mb-3"><a (click)="addAddress()" class="btn btn-light">Add address</a></span>
+          <span class="mr-2"><a (click)="goToEditUserPage()" class="btn btn-light">Edit user</a></span>
+          <span class="mr-2 mb-3"><a (click)="goToAddAddressPage()" class="btn btn-light">Add address</a></span>
         </div>
 
         <div class="card bg-light mb-3" style="max-width: 30rem;">
@@ -47,7 +47,7 @@
                   <p class="card-text"><b>Country: </b>{{address.country}}</p>
                 </div>
                 <div class="card-footer">
-                  <span class="mr-2"><a (click)="editAddressPage(address.id)" class="btn btn-light">Edit address</a></span>
+                  <span class="mr-2"><a (click)="goToEditAddressPage(address.id)" class="btn btn-light">Edit address</a></span>
                   <span class="mr-2"><a (click)="deleteAddress(address)" class="btn btn-light">Delete address</a></span>
                 </div>
               </div>

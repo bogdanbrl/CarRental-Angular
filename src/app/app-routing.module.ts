@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'users', component: ShowUsersComponent},
+  { path: 'user/edit', component: EditUserComponent},
   { path: 'user/:userId', component: ShowUserComponent},
   { path: 'history/user/:userId', component: HistoryUserComponent},
   { path: 'history/user', component: PrincipalHistoryComponent},
@@ -32,8 +33,7 @@ const routes: Routes = [
   { path: 'add', component: AddCarComponent},
   { path: 'edit', component: EditCarComponent},
   { path: 'address/add', component: AddAddressComponent},
-  { path: 'address/edit', component: EditAddressComponent},
-  { path: 'user/edit', component: EditUserComponent}
+  { path: 'address/edit/:addressId', component: EditAddressComponent}
 ];
 
 @NgModule({
