@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CarService} from '../../services/car.service';
 import {Router} from '@angular/router';
 import {Car} from '../../models/car';
+import {CarOptions} from '../../models/car-options';
 
 @Component({
   selector: 'app-add-car',
@@ -15,10 +16,8 @@ export class AddCarComponent implements OnInit {
   isAddFailed = false;
   errorMessage = '';
 
-
-
-
   car: Car = new Car();
+  carOptions: CarOptions = new CarOptions();
 
   carBodies: any;
   carClasses: any;
@@ -51,11 +50,12 @@ export class AddCarComponent implements OnInit {
   }
 
   addCar(): void {
+    this.car.carOptions = this.carOptions;
     console.log(this.car);
-    this.carService.add(this.form).subscribe(() => {
+    this.carService.add(this.car).subscribe(() => {
 
     });
-    // this.router.navigateByUrl('');
+    this.router.navigateByUrl('');
   }
 
 }

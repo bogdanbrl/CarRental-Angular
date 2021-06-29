@@ -42,6 +42,7 @@ export class CarService {
   }
 
   public add(car): Observable<any> {
-    return this.http.post(API_URL + 'add', car);
+    return this.http.post(API_URL + 'car', car, httpOptions);
   }
+
 }
