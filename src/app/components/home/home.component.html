@@ -1,0 +1,176 @@
+<div class="container" *ngIf="carBodies !=null && carEngines != null && carEngines != null">
+
+  <div>
+
+    <div class="form-group row">
+      <div class="col">
+        <div class="form-group row">
+          <label for="brand" class="col-sm-3 col-form-label">Brand</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="brand" placeholder="brand"
+                   [(ngModel)]="filterCriteria.brand">
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group row">
+          <label for="model" class="col-sm-3 col-form-label">Model</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="model" placeholder="model"
+                   [(ngModel)]="filterCriteria.model">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col">
+        <div class="form-group row">
+          <label for="isNewerThan" class="col-sm-3 col-form-label">Year</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="isNewerThan" placeholder="year"
+                   [(ngModel)]="filterCriteria.year">
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group row">
+          <label for="rentPrice" class="col-sm-3 col-form-label">Rent price</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="rentPrice" placeholder="max rent price"
+                   [(ngModel)]="filterCriteria.rentPrice">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col">
+        <div class="form-group row">
+          <label for="heatedSeats" class="col-sm-3 col-form-label">Heated seats</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="heatedSeats" aria-describedby="hasCarBody"
+                    [(ngModel)]="filterCriteria.heatedSeats">
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group row">
+          <label for="navigation" class="col-sm-3 col-form-label">Navigation</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="navigation" aria-describedby="hasCarBody"
+                    [(ngModel)]="filterCriteria.navigation">
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col">
+        <div class="form-group row">
+          <label for="hasCarBody" class="col-sm-3 col-form-label">Car body</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="hasCarBody" aria-describedby="hasCarBody"
+                    [(ngModel)]="filterCriteria.carBody">
+              <option *ngFor="let carBody of carBodies" [value]="carBody">{{carBody}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group row">
+          <label for="hasCarClass" class="col-sm-3 col-form-label">Car class</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="hasCarClass" aria-describedby="carClass"
+                    [(ngModel)]="filterCriteria.carClass">
+              <option *ngFor="let carClass of carClasses" [value]="carClass">{{carClass}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col">
+        <div class="form-group row">
+          <label for="engine" class="col-sm-3 col-form-label">Engine</label>
+          <div class="col-sm-9">
+            <select class="form-control" id="engine" aria-describedby="engine" [(ngModel)]="filterCriteria.engine">
+              <option *ngFor="let engine of carEngines" [value]="engine">{{engine}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group row">
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-2 col-form-label">Required period</div>
+      <div class="col-6 col-form-label">
+        <label for="startDate">Start rent:</label>
+        <input type="date" id="startDate" name="trip-start"
+               [(ngModel)]="filterCriteria.startRent">
+        <label for="endDate">End rent:</label>
+        <input type="date" id="endDate" name="trip-end"
+               [(ngModel)]="filterCriteria.endRent">
+      </div>
+    </div>
+
+
+    <button class="btn btn-outline-primary" (click)="filterCars()">Filter</button>
+
+  </div>
+
+
+  <div class="row mb-5">
+    <div class="col-8">
+
+    </div>
+    <div class="col-4">
+      <div class="input-group">
+        <input class="input-group-text mr-2" type="search"
+               placeholder="Search car" aria-label="searchValue" [(ngModel)]="searchValue">
+        <button class="btn btn-outline-success" (click)="searchCars()">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-5" *ngFor="let car of cars">
+    <div class="card text-center">
+      <div class="card-header">
+        <h4>{{car.brand}} {{car.model}}</h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Price per day: {{car.rentPrice | currency:'EUR'}}</h5>
+
+        <!--        <img [src]="getCarImage(car.id)">-->
+
+      </div>
+      <div class="card-footer text-muted">
+        <span class="mr-2"><a (click)="goToCarViewPage(car.id)" class="btn">See details</a></span>
+        <!--              <span class="mr-2"><a (click)="goToCarHistoryPage(car.id)" class="btn">Rent it</a></span>-->
+      </div>
+    </div>
+  </div>
+
+</div>

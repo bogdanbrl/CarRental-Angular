@@ -1,0 +1,41 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+
+  <p>
+    <strong>Token:</strong>
+    {{ currentUser.accessToken.substring(0, 20) }} ...
+    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+  </p>
+  <p>
+    <strong>Email:</strong>
+    {{ currentUser.email }}
+  </p>
+  <strong>Roles:</strong>
+  <ul>
+    <li *ngFor="let role of currentUser.roles">
+      {{ role }}
+    </li>
+  </ul>
+
+  <div *ngIf="userDerails != null">
+    <p><b>Username: </b>{{ userDerails.username }}</p>
+    <p><b>Name: </b>{{ userDerails.firstName }} {{ userDerails.lastName }}</p>
+    <p><b>Email: </b>{{ userDerails.email}}</p>
+    <p><b>Phone number: </b>{{ userDerails.phoneNumber}}</p>
+    <div *ngFor="let address of userDerails.addresses">
+      <p><b>Address: </b></p>
+      <p style="text-indent: 50px;"><b>Street </b>{{address.street}}</p>
+      <p style="text-indent: 50px;"><b>Street number </b>{{address.streetNumber}}</p>
+      <p style="text-indent: 50px;"><b>City </b>{{address.city}}</p>
+      <p style="text-indent: 50px;"><b>Country </b>{{address.country}}</p>
+      <button class="mr-2 mb-3"><a (click)="editAddressPage(address.id)" class="btn">Edit address</a></button>
+      <button class="mr-2 mb-3"><a (click)="deleteAddress(address)" class="btn">Delete address</a></button>
+    </div>
+    <button class="mr-2"><a (click)="editUser()" class="btn">Edit user</a></button>
+    <button class="mr-2"><a (click)="addAddress()" class="btn">Add new address</a></button>
+
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

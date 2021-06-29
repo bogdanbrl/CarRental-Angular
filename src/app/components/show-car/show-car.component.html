@@ -1,0 +1,30 @@
+<div class="container" *ngIf="car != null && carOptions != null">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card bg-light mb-3" style="max-width: 30rem;">
+        <div class="card-header">{{car.brand}} {{car.model}}</div>
+        <div class="card-body">
+
+          <p class="card-text">Year: {{car.year}}</p>
+          <p class="card-text">Rent price per day: {{car.rentPrice | currency:'EUR'}}</p>
+          <p class="card-text">Car body: {{car.carBody}}</p>
+          <p class="card-text">Car class: {{car.carClass}}</p>
+          <p class="card-text">Fuel: {{car.engine}}</p>
+          <p class="card-text">Heated seats: {{carOptions.hasHeatedSeats === true ? 'yes' : 'no'}}</p>
+          <p class="card-text">Navigation: {{carOptions.hasNavigation === true ? 'yes' : 'no'}}</p>
+
+          <div class="card-footer">
+            <div class="btn-group">
+              <!--              <span class="mr-2"><a (click)="goToEditCarPage(car.id)" class="btn btn-light">Edit car</a></span>-->
+              <span class="mr-2"><a (click)="goToRentCarPage(car.id)" class="btn btn-light">Rent it</a></span>
+              <span class="mr-2"><a (click)="goAddCarImagePage(car.id)" class="btn btn-light">Add image</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card mb-5" *ngFor="let user of users">
+    <div class="card text-center">
+      <div class="card-header">
+        <h4>Username: {{user.username}}</h4>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Name: {{user.firstName}} {{user.lastName}}</h5>
+      </div>
+      <div class="card-footer text-muted">
+        <span class="mr-2"><a (click)="goToViewUserPage(user.id)" class="btn">See details</a></span>
+        <span class="mr-2"><a (click)="goToUserHistoryPage(user.id)" class="btn">User history</a></span>
+      </div>
+    </div>
+  </div>
+</div>

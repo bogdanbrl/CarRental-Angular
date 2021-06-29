@@ -1,0 +1,233 @@
+
+<div class="container" *ngIf="carBodies !=null && carEngines != null && carEngines != null">
+
+  <div class="container">
+
+    <p class="h1">Add new car to fleet</p>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input type="text" class="form-control" id="brand" aria-describedby="brand" [(ngModel)]="car.brand"
+             placeholder="brand">
+    </div>
+
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input type="text" class="form-control" id="model" aria-describedby="model" [(ngModel)]="car.model"
+             placeholder="model">
+    </div>
+
+    <div class="form-group">
+      <label for="year">Year</label>
+      <input type="number" class="form-control" id="year" aria-describedby="year" [(ngModel)]="car.year"
+             placeholder="year">
+    </div>
+
+    <div class="form-group">
+      <label for="rentPrice">Rent price</label>
+      <input type="number" class="form-control" id="rentPrice" aria-describedby="rentPrice"
+             [(ngModel)]="car.rentPrice"
+             placeholder="rent price">
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="text" class="form-control" id="image" aria-describedby="image"
+             [(ngModel)]="car.image"
+             placeholder="http://image.png">
+    </div>
+
+    <div class="form-group">
+      <label for="carBody">Car body</label>
+      <select class="form-control" id="carBody" aria-describedby="carBody" [(ngModel)]="car.carBody">
+        <option *ngFor="let carBody of carBodies" [value]="carBody">{{carBody}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="carClass">Car class</label>
+      <select class="form-control" id="carClass" aria-describedby="carClass" [(ngModel)]="car.carClass">
+        <option *ngFor="let carClass of carClasses" [value]="carClass">{{carClass}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="engine">Car engine</label>
+      <select class="form-control" id="engine" aria-describedby="engine" [(ngModel)]="car.engine">
+        <option *ngFor="let engine of carEngines" [value]="engine">{{engine}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="hasHeatedSeats">Car has heated seats</label>
+      <select class="form-control" id="hasHeatedSeats" aria-describedby="hasHeatedSeats"
+              [(ngModel)]="car.carOptions.hasHeatedSeats">
+        <option ngValue=true>Yes</option>
+        <option ngValue=false>No</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="hasNavigation">Car has navigation</label>
+      <select class="form-control" id="hasNavigation" aria-describedby="hasNavigation"
+              [(ngModel)]="car.carOptions.hasNavigation">
+        <option ngValue=true>Yes</option>
+        <option ngValue=false>No</option>
+      </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" (click)="addCar()">Add car</button>
+  </div>
+
+</div>
+
+
+
+
+
+
+<!--<div class="col-md-12" *ngIf="carBodies !=null && carEngines != null && carEngines != null">-->
+<!--  <div class="card card-container">-->
+<!--    <form name="form" (ngSubmit)="f.form.valid && addCar()" #f="ngForm" novalidate>-->
+
+<!--      <div class="form-group">-->
+<!--        <label for="brand">Brand</label>-->
+<!--        <input type="text" id="brand" class="form-control" name="brand"-->
+<!--               [(ngModel)]="form.brand" required minlength="3" maxlength="20" #brand="ngModel"/>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && brand.invalid">-->
+<!--          <div *ngIf="brand.errors.required">Brand is required</div>-->
+<!--          <div *ngIf="brand.errors.minlength">-->
+<!--            Brand must be at least 3 characters-->
+<!--          </div>-->
+<!--          <div *ngIf="brand.errors.maxlength">-->
+<!--            Brand must be at most 20 characters-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="model">Model</label>-->
+<!--        <input type="text" id="model" class="form-control" name="model"-->
+<!--               [(ngModel)]="form.model" required minlength="3" maxlength="20" #model="ngModel"/>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && model.invalid">-->
+<!--          <div *ngIf="model.errors.required">Model is required</div>-->
+<!--          <div *ngIf="model.errors.minlength">-->
+<!--            Model must be at least 3 characters-->
+<!--          </div>-->
+<!--          <div *ngIf="model.errors.maxlength">-->
+<!--            Model must be at most 20 characters-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="year">Year</label>-->
+<!--        <input type="text" id="year" class="form-control" name="year"-->
+<!--               [(ngModel)]="form.year" required minlength="4" maxlength="4" #year="ngModel"/>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && year.invalid">-->
+<!--          <div *ngIf="year.errors.required">Year is required</div>-->
+<!--          <div *ngIf="year.errors.minlength">-->
+<!--            Year must be 3 characters long-->
+<!--          </div>-->
+<!--          <div *ngIf="year.errors.maxlength">-->
+<!--            Year must be 3 characters long-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="rentPrice">Rent price</label>-->
+<!--        <input type="text" id="rentPrice" class="form-control" name="rentPrice"-->
+<!--               [(ngModel)]="form.rentPrice" required #rentPrice="ngModel"/>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && rentPrice.invalid">-->
+<!--          <div *ngIf="rentPrice.errors.required">Rent price is required</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="carBody">Car body</label>-->
+<!--        <select class="form-control" id="carBody" aria-describedby="carBody" [(ngModel)]="form.carBody" required #carBody="ngModel">-->
+<!--          <option *ngFor="let carBody of carBodies" [value]="carBody">{{carBody}}</option>-->
+<!--        </select>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && carBody.invalid">-->
+<!--          <div *ngIf="carBody.errors.required">Car body is required</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="carClass">Car class</label>-->
+<!--        <select class="form-control" id="carClass" aria-describedby="carClass" [(ngModel)]="form.carClass" required #carClass="ngModel">-->
+<!--          <option *ngFor="let carClass of carClasses" [value]="carClass">{{carClass}}</option>-->
+<!--        </select>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && carClass.invalid">-->
+<!--          <div *ngIf="carClass.errors.required">Car class is required</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="engine">Engine</label>-->
+<!--        <select class="form-control" id="engine" aria-describedby="engine" [(ngModel)]="form.engine" required #engine="ngModel">-->
+<!--          <option *ngFor="let engine of carEngines" [value]="engine">{{engine}}</option>-->
+<!--        </select>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && engine.invalid">-->
+<!--          <div *ngIf="engine.errors.required">Engine is required</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="image">Image</label>-->
+<!--        <input type="text" id="image" class="form-control" name="image"-->
+<!--               [(ngModel)]="form.image" required minlength="12" #image="ngModel"/>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && image.invalid">-->
+<!--          <div *ngIf="image.errors.required">Image is required</div>-->
+<!--          <div *ngIf="year.errors.minlength">-->
+<!--            Image must be at least 12 characters-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="hasHeatedSeats">Has heated seats</label>-->
+<!--        <select class="form-control" id="hasHeatedSeats" aria-describedby="engine" [(ngModel)]="form.hasHeatedSeats" required #hasHeatedSeats="ngModel">-->
+<!--          <option ngValue=true>Yes</option>-->
+<!--          <option ngValue=false>No</option>-->
+<!--        </select>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && hasHeatedSeats.invalid">-->
+<!--          <div *ngIf="hasHeatedSeats.errors.required">Heated seats is required</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="form-group">-->
+<!--        <label for="hasNavigation">Has navigation</label>-->
+<!--        <select class="form-control" id="hasNavigation" aria-describedby="hasNavigation" [(ngModel)]="form.hasNavigation" required #hasNavigation="ngModel">-->
+<!--          <option ngValue=true>Yes</option>-->
+<!--          <option ngValue=false>No</option>-->
+<!--        </select>-->
+<!--        <div class="alert-danger" *ngIf="f.submitted && hasNavigation.invalid">-->
+<!--          <div *ngIf="hasNavigation.errors.required">Navigation value is required</div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="form-group">-->
+<!--        <button class="btn btn-primary btn-block">Add car</button>-->
+<!--      </div>-->
+
+<!--      <div class="alert alert-warning" *ngIf="f.submitted && isAddFailed">-->
+<!--        Cannot add car!<br/>{{ errorMessage }}-->
+<!--      </div>-->
+<!--    </form>-->
+
+<!--    <div class="alert alert-success" *ngIf="isAddSuccessful">-->
+<!--      Car added!-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
