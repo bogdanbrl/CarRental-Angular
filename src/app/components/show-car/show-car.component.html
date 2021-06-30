@@ -15,9 +15,10 @@
 
           <div class="card-footer">
             <div class="btn-group">
-              <!--              <span class="mr-2"><a (click)="goToEditCarPage(car.id)" class="btn btn-light">Edit car</a></span>-->
               <span class="mr-2"><a (click)="goToRentCarPage(car.id)" class="btn btn-light">Rent it</a></span>
-              <span class="mr-2"><a (click)="goAddCarImagePage(car.id)" class="btn btn-light">Add image</a></span>
+              <span class="mr-2"><a (click)="goEditCarPage(car.id)" class="btn btn-light" *ngIf="showEditAndHistoryBtn">Edit car</a></span>
+              <span class="mr-2"><a (click)="seeCarHistory(car.id)" class="btn btn-light" *ngIf="showEditAndHistoryBtn">Car history</a></span>
+<!--              <span class="mr-2"><a (click)="hideCar()" class="btn btn-light" *ngIf="showEditAndHistoryBtn">Hide</a></span>-->
             </div>
           </div>
         </div>

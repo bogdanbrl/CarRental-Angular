@@ -1,1 +1,86 @@
-<p>edit-car works!</p>
+
+<div class="container" *ngIf="carBodies && carEngines && carEngines && car">
+
+  <div class="container">
+
+    <p class="h1">Edit car</p>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input type="text" class="form-control" id="brand" aria-describedby="brand" [(ngModel)]="car.brand"
+             placeholder="brand">
+    </div>
+
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input type="text" class="form-control" id="model" aria-describedby="model" [(ngModel)]="car.model"
+             placeholder="model">
+    </div>
+
+    <div class="form-group">
+      <label for="year">Year</label>
+      <input type="number" class="form-control" id="year" aria-describedby="year" [(ngModel)]="car.year"
+             placeholder="year">
+    </div>
+
+    <div class="form-group">
+      <label for="rentPrice">Rent price</label>
+      <input type="number" class="form-control" id="rentPrice" aria-describedby="rentPrice"
+             [(ngModel)]="car.rentPrice"
+             placeholder="rent price">
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="text" class="form-control" id="image" aria-describedby="image"
+             [(ngModel)]="car.image"
+             placeholder="http://image.png">
+    </div>
+
+    <div class="form-group">
+      <label for="carBody">Car body</label>
+      <select class="form-control" id="carBody" aria-describedby="carBody" [(ngModel)]="car.carBody">
+        <option *ngFor="let carBody of carBodies" [value]="carBody">{{carBody}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="carClass">Car class</label>
+      <select class="form-control" id="carClass" aria-describedby="carClass" [(ngModel)]="car.carClass">
+        <option *ngFor="let carClass of carClasses" [value]="carClass">{{carClass}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="engine">Car engine</label>
+      <select class="form-control" id="engine" aria-describedby="engine" [(ngModel)]="car.engine">
+        <option *ngFor="let engine of carEngines" [value]="engine">{{engine}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="hasHeatedSeats">Car has heated seats</label>
+      <select class="form-control" id="hasHeatedSeats" aria-describedby="hasHeatedSeats"
+              [(ngModel)]="car.carOptions.hasHeatedSeats">
+        <option ngValue=true>Yes</option>
+        <option ngValue=false>No</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="hasNavigation">Car has navigation</label>
+      <select class="form-control" id="hasNavigation" aria-describedby="hasNavigation"
+              [(ngModel)]="car.carOptions.hasNavigation">
+        <option ngValue=true>Yes</option>
+        <option ngValue=false>No</option>
+      </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" (click)="editCar()">Save</button>
+  </div>
+
+</div>
+
+
+
+

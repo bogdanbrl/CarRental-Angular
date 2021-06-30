@@ -155,21 +155,24 @@
     </div>
   </div>
 
-  <div class="card mb-5" *ngFor="let car of cars">
-    <div class="card text-center">
-      <div class="card-header">
-        <h4>{{car.brand}} {{car.model}}</h4>
+  <div class="row" *ngFor="let car of cars">
+    <div class="col-9">
+      <div class="card mb-5" (click)="goToCarViewPage(car.id)">
+        <div class="card text-center">
+          <div class="card-header">
+            <h4>{{car.brand}} {{car.model}}</h4>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Price per day: {{car.rentPrice | currency:'EUR'}}</h5>
+          </div>
+          <div class="card-footer text-muted">
+            <h4>Class: {{car.carClass}}</h4>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Price per day: {{car.rentPrice | currency:'EUR'}}</h5>
-
-        <img [src]="car.image">
-
-      </div>
-      <div class="card-footer text-muted">
-        <span class="mr-2"><a (click)="goToCarViewPage(car.id)" class="btn">See details</a></span>
-        <!--              <span class="mr-2"><a (click)="goToCarHistoryPage(car.id)" class="btn">Rent it</a></span>-->
-      </div>
+    </div>
+    <div class="col-3">
+      <img [src]="car.image" width="263" height="170">
     </div>
   </div>
 

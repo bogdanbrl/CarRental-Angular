@@ -45,4 +45,11 @@ export class CarService {
     return this.http.post(API_URL + 'car', car, httpOptions);
   }
 
+  public editCar(car): Observable<any> {
+    return this.http.post(API_URL + 'editCar', car, httpOptions);
+  }
+
+  public hideCar(car) {
+    return this.http.post(API_URL + 'hide', car, httpOptions);
+  }
 }

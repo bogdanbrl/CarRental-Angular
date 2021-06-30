@@ -23,6 +23,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { EditAddressComponent } from './components/edit-address/edit-address.component';
 import { AddAddressComponent } from './components/add-address/add-address.component';
 import { PrincipalHistoryComponent } from './components/principal-history/principal-history.component';
+import { HistoryCarComponent } from './components/history-car/history-car.component';
+import { RentCarComponent } from './components/rent-car/rent-car.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PrincipalHistoryComponent } from './components/principal-history/princi
     EditUserComponent,
     EditAddressComponent,
     AddAddressComponent,
-    PrincipalHistoryComponent
+    PrincipalHistoryComponent,
+    HistoryCarComponent,
+    RentCarComponent
   ],
   imports: [
     BrowserModule,

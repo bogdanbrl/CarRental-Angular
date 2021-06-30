@@ -16,6 +16,8 @@ import {AddAddressComponent} from './components/add-address/add-address.componen
 import {EditAddressComponent} from './components/edit-address/edit-address.component';
 import {EditUserComponent} from './components/edit-user/edit-user.component';
 import {PrincipalHistoryComponent} from './components/principal-history/principal-history.component';
+import {HistoryCarComponent} from "./components/history-car/history-car.component";
+import {RentCarComponent} from "./components/rent-car/rent-car.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,10 +30,12 @@ const routes: Routes = [
   { path: 'user/:userId', component: ShowUserComponent},
   { path: 'history/user/:userId', component: HistoryUserComponent},
   { path: 'history/user', component: PrincipalHistoryComponent},
+  { path: 'history/car/:carId', component: HistoryCarComponent},
   { path: 'car/:carId', component: ShowCarComponent},
   { path: 'rents', component: ShowRentsComponent},
+  { path: 'rent/car/:carId', component: RentCarComponent},
   { path: 'add', component: AddCarComponent},
-  { path: 'edit', component: EditCarComponent},
+  { path: 'edit/:carId', component: EditCarComponent},
   { path: 'address/add', component: AddAddressComponent},
   { path: 'address/edit/:addressId', component: EditAddressComponent}
 ];
