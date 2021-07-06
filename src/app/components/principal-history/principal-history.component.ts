@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -10,15 +10,20 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class PrincipalHistoryComponent implements OnInit {
 
   rents: any;
+
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.userService.getPrincipalUserHistory().subscribe(rents => {
-      this.rents = rents;
-      console.log(rents);
-    });
+    this.userService.getPrincipalUserHistory().subscribe((rents) => {
+        this.rents = rents;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   goToCarViewPage(id) {

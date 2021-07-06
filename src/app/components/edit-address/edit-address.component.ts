@@ -23,8 +23,13 @@ export class EditAddressComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.address);
-    this.userService.editAddress(this.address).subscribe( () => {});
+    this.userService.editAddress(this.address).subscribe( (response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     this.router.navigateByUrl('profile');
   }
 }

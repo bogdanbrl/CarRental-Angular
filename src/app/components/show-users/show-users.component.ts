@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 
@@ -10,13 +10,19 @@ import {Router} from '@angular/router';
 export class ShowUsersComponent implements OnInit {
 
   users: any;
+
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe(users => {
-      this.users = users;
-    });
+    this.userService.getUsers().subscribe((users) => {
+        this.users = users;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   goToViewUserPage(id) {

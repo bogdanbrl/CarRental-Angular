@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../auth/_services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../../auth/_services/user.service';
 import {Router} from '@angular/router';
 import {FilterCriteria} from '../../models/filter-criteria';
 import {CarService} from '../../services/car.service';
@@ -49,8 +49,12 @@ export class HomeComponent implements OnInit {
 
   filterCars(): any {
     this.carService.getCars(this.filterCriteria).subscribe((data) => {
-      this.cars = data;
-    });
+        this.cars = data;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     this.resetValues();
   }
 
@@ -63,9 +67,13 @@ export class HomeComponent implements OnInit {
     let params = new HttpParams();
     params = params.append('searchValue', this.searchValue);
 
-    this.carService.searchCars(params).subscribe(cars => {
-      this.cars = cars;
-    });
+    this.carService.searchCars(params).subscribe((cars) => {
+        this.cars = cars;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     this.searchValue = null;
   }
 

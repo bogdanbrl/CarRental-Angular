@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -15,14 +15,19 @@ export class ShowUserComponent implements OnInit {
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     const userId = this.activatedRoute.snapshot.params['userId'];
-    this.userService.getById(userId).subscribe(user => {
-      this.user = user;
-      this.addresses = user.addresses;
-    });
+    this.userService.getById(userId).subscribe((user) => {
+        this.user = user;
+        this.addresses = user.addresses;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   goToUserHistoryPage(userId: number) {

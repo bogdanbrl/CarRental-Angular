@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpParams} from '@angular/common/http';
 import {RentService} from '../../services/rent.service';
 import {Router} from '@angular/router';
@@ -14,8 +14,10 @@ export class ShowRentsComponent implements OnInit {
 
   startPeriod: Date = null;
   endPeriod: Date = null;
+
   constructor(private rentService: RentService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.rentService.getRents().subscribe(rents => {
@@ -37,14 +39,24 @@ export class ShowRentsComponent implements OnInit {
       params = params.append('startPeriod', this.startPeriod.toString());
       params = params.append('endPeriod', this.endPeriod.toString());
 
-      this.rentService.getRentsByPeriod(params).subscribe(rents => this.rents = rents);
+      this.rentService.getRentsByPeriod(params).subscribe((rents) => {
+          this.rents = rents;
+        },
+        (error) => {
+          console.log('error');
+          console.log(error);
+        });
     }
   }
 
   getTodayRents() {
-    this.rentService.getTodayRents().subscribe(rents => {
-      this.rents = rents;
-    });
+    this.rentService.getTodayRents().subscribe((rents) => {
+        this.rents = rents;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
 }

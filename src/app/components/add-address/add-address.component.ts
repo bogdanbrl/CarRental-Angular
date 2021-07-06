@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Address} from '../../models/address';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
@@ -11,17 +11,22 @@ import {Router} from '@angular/router';
 export class AddAddressComponent implements OnInit {
 
   address: Address = new Address();
+
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
 
   addAddress() {
-    console.log(this.address);
-    this.userService.addAddress(this.address).subscribe( () => {
-
-    });
+    this.userService.addAddress(this.address).subscribe((response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     window.location.reload();
   }
 }
