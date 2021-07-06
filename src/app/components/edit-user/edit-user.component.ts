@@ -20,6 +20,7 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.user);
     this.userService.editUser(this.user).subscribe( () => {
 
     });

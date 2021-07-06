@@ -34,11 +34,11 @@ export class UserService {
   }
 
   public editAddress(address): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/address', address);
+    return this.http.put<any>('http://localhost:8080/editAddress', address);
   }
 
-  public deleteAddress(address): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/deleteAddress', address);
+  public deleteAddress(addressId): Observable<any> {
+    return this.http.delete<any>('http://localhost:8080/deleteAddress/' + addressId);
   }
 
   public addAddress(address): Observable<any> {
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   public editUser(user): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/editUser', user);
+    return this.http.put<any>('http://localhost:8080/editUser', user);
   }
 
   public getAddressByID(addressId): Observable<any> {

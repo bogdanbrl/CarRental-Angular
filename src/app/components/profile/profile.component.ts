@@ -33,8 +33,9 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('address/edit/' + id);
   }
 
-  deleteAddress(address) {
-    this.userService.deleteAddress(address).subscribe(() => {
+  deleteAddress(addressId) {
+    console.log(addressId);
+    this.userService.deleteAddress(addressId).subscribe(() => {
     });
     window.location.reload();
   }
