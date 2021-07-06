@@ -15,7 +15,10 @@
     </div>
   </div>
 
-  <div class="text-danger" *ngIf="msgResponse != null">
-    * afs
+  <div class="text-success" *ngIf="msgResponse != null">
+    {{ msgResponse }}
+  </div>
+  <div class="text-danger" *ngIf="msgError != null">
+    {{ msgError }}
   </div>
 </div>

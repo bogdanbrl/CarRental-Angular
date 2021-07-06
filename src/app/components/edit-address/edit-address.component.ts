@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EditAddressComponent implements OnInit {
 
-  address: Address = new Address();
+  address: any;
 
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
@@ -18,7 +18,7 @@ export class EditAddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    const addressID = this.activatedRoute.snapshot.params['addressId'];
+    const addressID = this.activatedRoute.snapshot.params.addressId;
     this.userService.getAddressByID(addressID).subscribe((address) => {
         this.address = address;
       },

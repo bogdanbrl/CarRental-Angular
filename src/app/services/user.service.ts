@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 
+const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', }), responseType: 'text' as 'json' };
 
 @Injectable({
   providedIn: 'root'
@@ -35,11 +36,11 @@ export class UserService {
     return this.http.get<any>(`${environment.apiUrl}/user/details`);
   }
 
-  public editAddress(address): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}/address/edit`, address);
+  public editAddress(address: any): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/address/edit`, address, httpOptions);
   }
 
-  public deleteAddress(addressId): Observable<any> {
+  public deleteAddress(addressId: number): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/address/delete/${addressId}`);
   }
 
