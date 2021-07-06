@@ -1,6 +1,6 @@
 <div class="container" *ngIf="car != null && carOptions != null">
   <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-6 ">
       <div class="card bg-light mb-3" style="max-width: 30rem;">
         <div class="card-header">{{car.brand}} {{car.model}}</div>
         <div class="card-body">
@@ -23,6 +23,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-md-4">
+      <img [src]="car.image" width="393" height="270">
     </div>
   </div>
 </div>

@@ -46,6 +46,7 @@ export class AddCarComponent implements OnInit {
 
   addCar(): void {
     this.car.carOptions = this.carOptions;
+    console.log(this.carOptions);
     console.log(this.car);
     this.carService.add(this.car).subscribe(() => {
 

@@ -1,0 +1,33 @@
+<div class="container" *ngIf="rents">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Car</th>
+      <th scope="col">Rented from</th>
+      <th scope="col">Rented until</th>
+      <th scope="col">Rented days</th>
+      <th scope="col">Price per day</th>
+      <th scope="col">Earnings</th>
+      <th scope="col">Rented to</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let rent of rents">
+    <tr>
+      <th scope="row">*</th>
+      <td><a type="button" class="blue" routerLinkActive="active"
+             (click)="goToCarViewPage(rent.car.id)">{{rent.car.brand}} {{rent.car.model}}</a></td>
+      <td>{{rent.startRent | date: 'medium'}}</td>
+      <td>{{rent.endRent | date: 'medium'}}</td>
+      <td>{{rent.rentedDays}}</td>
+      <td>{{rent.rentPricePerDay | currency:'EUR'}}</td>
+      <td>{{rent.earnings | currency:'EUR'}}</td>
+      <td><a type="button" class="blue" routerLinkActive="active"
+             (click)="goToUserViewPage(rent.user.id)">{{rent.user.firstName}} {{rent.user.lastName}}</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+

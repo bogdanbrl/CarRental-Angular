@@ -1,0 +1,17 @@
+<div class="container" *ngIf="rents != null">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-3" style="width: 40rem;" *ngFor="let rent of rents">
+        <div class="card-body">
+          <div>
+            <b>Rented from: </b>{{rent.startRent | date: 'medium'}}
+            <b>until: </b>{{rent.endRent | date: 'medium'}}
+          </div>
+          <div>
+            <b>Rented for: </b>{{rent.rentedDays}}<b> days.</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

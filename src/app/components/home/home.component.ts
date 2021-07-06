@@ -31,29 +31,24 @@ export class HomeComponent implements OnInit {
 
   getCarBodies(): void {
     this.carService.getCarBodies().subscribe((data) => {
-      console.log(data);
       this.carBodies = data;
     });
   }
 
   getCarClasses(): void {
     this.carService.getCarClasses().subscribe((data) => {
-      console.log(data);
       this.carClasses = data;
     });
   }
 
   getCarEngines(): void {
     this.carService.getCarEngines().subscribe((data) => {
-      console.log(data);
       this.carEngines = data;
     });
   }
 
   filterCars(): any {
-    console.log(this.filterCriteria);
     this.carService.getCars(this.filterCriteria).subscribe((data) => {
-      console.log(data);
       this.cars = data;
     });
     this.resetValues();

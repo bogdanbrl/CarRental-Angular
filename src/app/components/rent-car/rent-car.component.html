@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="row mb-5">
+    <div class="col-2 col-form-label">Insert period</div>
+    <div class="col-6 col-form-label">
+      <label for="startDate">Start date:</label>
+      <input type="date" id="startDate" name="trip-start"
+             [(ngModel)]="startPeriod">
+      <label for="endDate">End date:</label>
+      <input type="date" id="endDate" name="trip-end"
+             [(ngModel)]="endPeriod">
+    </div>
+    <div class="col-1">
+      <a (click)="rentCar()" class="btn btn-outline-info">Rent</a>
+    </div>
+  </div>
+
+  <div class="text-danger" *ngIf="msgResponse != null">
+    * afs
+  </div>
+</div>
