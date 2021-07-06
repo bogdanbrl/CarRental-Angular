@@ -26,6 +26,6 @@ export class RentService {
   }
 
   public rentCar(params: HttpParams) {
-    return this.http.get<any>('http://localhost:8080/rentCar',{params: params});
+    return this.http.post<any>('http://localhost:8080/rentCar', {}, {params: params});
   }
 }

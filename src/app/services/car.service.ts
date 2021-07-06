@@ -18,7 +18,7 @@ export class CarService {
   }
 
   getCars(filterCriteria: FilterCriteria): Observable<any> {
-    return this.http.post<any>(API_URL + 'cars', filterCriteria);
+    return this.http.post<any>(API_URL + 'cars', {filterCriteria}, {});
   }
 
   getCarBodies(): Observable<any> {
@@ -42,13 +42,12 @@ export class CarService {
   }
 
   public add(car): Observable<any> {
-    console.log(car);
-    console.log(httpOptions);
     return this.http.post(API_URL + 'car', car, httpOptions);
   }
 
   public editCar(car): Observable<any> {
-    return this.http.post(API_URL + 'editCar', car, httpOptions);
+    console.log(car.id);
+    return this.http.put(API_URL + 'editCar', car, httpOptions);
   }
 
   public hideCar(car) {
