@@ -24,9 +24,13 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserDetails() {
-    this.userService.getUserDetails().subscribe(data => {
-      this.userDerails = data;
-    });
+    this.userService.getUserDetails().subscribe((data) => {
+        this.userDerails = data;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   goToEditAddressPage(id) {
@@ -35,8 +39,13 @@ export class ProfileComponent implements OnInit {
 
   deleteAddress(addressId) {
     console.log(addressId);
-    this.userService.deleteAddress(addressId).subscribe(() => {
-    });
+    this.userService.deleteAddress(addressId).subscribe((response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     window.location.reload();
   }
 

@@ -39,11 +39,6 @@ export class RentCarComponent implements OnInit {
         console.log('error');
         console.log(error.error.text);
       });
-
-      // this.rentService.rentCar(params).subscribe(msg => {
-      //   this.msgResponse = msg;
-      //   console.log(msg);
-      // });
     }
   }
 }

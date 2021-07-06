@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 
@@ -10,20 +10,30 @@ import {Router} from '@angular/router';
 export class EditUserComponent implements OnInit {
 
   user: any = {};
+
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.userService.getByPrincipalName().subscribe( user => {
-      this.user = user;
-    });
+    this.userService.getByPrincipalName().subscribe((user) => {
+        this.user = user;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   onSubmit() {
     console.log(this.user);
-    this.userService.editUser(this.user).subscribe( () => {
-
-    });
+    this.userService.editUser(this.user).subscribe((response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     this.router.navigateByUrl('profile');
   }
 }

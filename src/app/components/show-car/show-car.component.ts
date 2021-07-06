@@ -26,10 +26,14 @@ export class ShowCarComponent implements OnInit {
 
   ngOnInit() {
     const carId = this.activatedRoute.snapshot.params['carId'];
-    this.carService.getById(carId).subscribe(car => {
-      this.car = car;
-      this.carOptions = car.carOptions;
-    });
+    this.carService.getById(carId).subscribe((car) => {
+        this.car = car;
+        this.carOptions = car.carOptions;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   goToRentCarPage(id) {
@@ -50,6 +54,12 @@ export class ShowCarComponent implements OnInit {
   }
 
   hideCar() {
-    this.carService.hideCar(this.car).subscribe( () => {});
+    this.carService.hideCar(this.car).subscribe((response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 }

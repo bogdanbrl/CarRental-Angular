@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Address} from '../../models/address';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,20 +11,31 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EditAddressComponent implements OnInit {
 
   address: Address = new Address();
+
   constructor(private userService: UserService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     const addressID = this.activatedRoute.snapshot.params['addressId'];
-    this.userService.getAddressByID(addressID).subscribe(address => {
-      this.address = address;
-    });
+    this.userService.getAddressByID(addressID).subscribe((address) => {
+        this.address = address;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   onSubmit() {
-    console.log(this.address);
-    this.userService.editAddress(this.address).subscribe( () => {});
+    this.userService.editAddress(this.address).subscribe((response: any) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
     this.router.navigateByUrl('profile');
   }
 }

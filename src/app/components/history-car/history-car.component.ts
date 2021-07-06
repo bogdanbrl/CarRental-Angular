@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RentService} from '../../services/rent.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -10,16 +10,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class HistoryCarComponent implements OnInit {
 
   rents: any;
+
   constructor(private rentService: RentService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     const carId = this.activatedRoute.snapshot.params['carId'];
-    this.rentService.getCarRents(carId).subscribe(rents => {
-      this.rents = rents;
-      console.log(rents);
-    });
+    this.rentService.getCarRents(carId).subscribe((rents) => {
+        this.rents = rents;
+      },
+      (error) => {
+        console.log('error');
+        console.log(error);
+      });
   }
 
   goToCarViewPage(carId: number) {

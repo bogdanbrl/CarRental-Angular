@@ -52,6 +52,6 @@ export class UserService {
   }
 
   public getAddressByID(addressId): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/address/delete/${addressId}`);
+    return this.http.get<any>(`${environment.apiUrl}/address/getById/${addressId}`);
   }
 }
