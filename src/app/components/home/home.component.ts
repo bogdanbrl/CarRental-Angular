@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../auth/_services/user.service';
 import {Router} from '@angular/router';
 import {FilterCriteria} from '../../models/filter-criteria';
 import {CarService} from '../../services/car.service';
