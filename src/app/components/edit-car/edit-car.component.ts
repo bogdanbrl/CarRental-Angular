@@ -48,5 +48,6 @@ export class EditCarComponent implements OnInit {
 
   editCar() {
     this.carService.editCar(this.car).subscribe( () => {});
+    this.router.navigateByUrl('');
   }
 }
