@@ -10,6 +10,8 @@
           <div>
             <b>Rented for: </b>{{rent.rentedDays}}<b> days.</b>
           </div>
+          <div><b>Rented car: </b><a type="button" class="blue" routerLinkActive="active"
+                                     (click)="goToCarViewPage(rent.car.id)">{{rent.car.brand}} {{rent.car.model}}</a></div>
         </div>
       </div>
     </div>

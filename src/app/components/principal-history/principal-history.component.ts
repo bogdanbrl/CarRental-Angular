@@ -21,4 +21,7 @@ export class PrincipalHistoryComponent implements OnInit {
     });
   }
 
+  goToCarViewPage(id) {
+    this.router.navigateByUrl('/car/' + id);
+  }
 }
