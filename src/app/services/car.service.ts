@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import { FilterCriteria } from '../models/filter-criteria';
 import {environment} from '../../environments/environment';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Acces-Control-Allow-Origin': '/*' })
 };
