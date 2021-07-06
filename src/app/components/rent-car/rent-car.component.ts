@@ -50,6 +50,9 @@ export class RentCarComponent implements OnInit {
 
 
   rentCar() {
+    this.msgResponse = null;
+    this.msgError = null;
+
     const carId = this.activatedRoute.snapshot.params.carId;
 
     if (this.startPeriod != null && this.endPeriod != null) {
